@@ -1,27 +1,43 @@
 #include "monty.h"
 
-/**
- * _push - pushes integer on to the stack
- * @stack: The stack to push the integer onto
- * @line_number: line num in the file where the push instruction was found
- * Return: 0 if instruction successful or 1 if instruction failed
- */
 
-int _push(stack_t **stack, unsigned int line_number)
+void _push(stack_t **stack, unsigned int line_number, char *value)
 {
-	/* Check if there is an argument */
-	if (argc < 2)
+	stack_t *new_node;
+	int num;
+
+	if (value == NULL || !is_digit(value))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	/* Get the integer from the argument */
-	int value = atoi(argv[1]);
+	num = atoi(value);
+		    
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
-	/* Push the integer onto the stack */
-	stack_push(stack, value);
+	new_node->n = num;
+	new_node->next = *stack;
+	*stack = new_node;
+}
 
-/* Return 0 if the push instruction was successful */
-return (0);
+
+int is_digit(char *string)
+{
+	if (!string)
+		return (0);
+	if (*string == '-')
+		string++;
+	while (*string)
+	{
+		if (!isdigit(*string))
+			return (0);
+		string++;
+	}
+	return (1);
 }

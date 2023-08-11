@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define DELIMITERS " \t\n"
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -36,6 +37,11 @@ typedef struct instruction_s
 
 /* Prototypes */
 void open_file(char *filename);
-void read_file(FILE *fileReader)
+void read_file(FILE *fileReader);
+char **tokenize_line(char *line);
+void (*get_instruction_function(char *opcode))(stack_t **, unsigned int);
+void _pall(stack_t **stack, unsigned int line_number);
+void _push(stack_t **stack, unsigned int line_number, char *value)
+
 
 #endif
