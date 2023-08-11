@@ -43,11 +43,7 @@ while (getline(&line, NULL, fileReader) != -1)
 }
 return (0);
 }
-/**
- *
- *
- *
- */
+
 void open_file(char *filename)
 {
 	/* Check if filename is NULL */
