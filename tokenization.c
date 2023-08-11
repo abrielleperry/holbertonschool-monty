@@ -6,7 +6,7 @@ char **tokenize_line(char *line)
 {
 	int buffer_size = 64;
 	int position = 0;
-	char **tokens = malloc(buffer_size * sizeof(char*));
+	char **tokens = malloc(buffer_size * sizeof(char *));
 	char *token;
 
 	if (!tokens)
@@ -14,7 +14,7 @@ char **tokenize_line(char *line)
 		fprintf(stderr, "Memory allocation error\n");
 		exit(EXIT_FAILURE);
 	}
-	
+
 	token = strtok(line, DELIMITERS);
 	while (token != NULL)
 	{
@@ -24,8 +24,8 @@ char **tokenize_line(char *line)
 	if (position >= buffer_size)
 	{
 		buffer_size += 64;
-		tokens = realloc(tokens, buffer_size * sizeof(char*));
-		
+		tokens = realloc(tokens, buffer_size * sizeof(char *));
+
 		if (!tokens)
 		{
 			fprintf(stderr, "Memory allocation error\n");
@@ -36,5 +36,5 @@ char **tokenize_line(char *line)
 	token = strtok(NULL, DELIMITERS);
 }
 tokens[position] = NULL;
-return tokens;
+return (tokens);
 }

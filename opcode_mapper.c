@@ -1,7 +1,7 @@
 #include "monty.h"
 
 
-void (*get_intruction_function(char *opcode))(stack_t **, unsigned int)
+void (*opfunc_mapper(char *opcode))(stack_t **, unsigned int)
 {
 	instruction_t opcodes[] = {
 		{"push", _push},

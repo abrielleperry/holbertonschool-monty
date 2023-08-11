@@ -39,9 +39,12 @@ typedef struct instruction_s
 void open_file(char *filename);
 void read_file(FILE *fileReader);
 char **tokenize_line(char *line);
-void (*get_instruction_function(char *opcode))(stack_t **, unsigned int);
+void (*opfunc_mapper(char *opcode))(stack_t **, unsigned int);
 void _pall(stack_t **stack, unsigned int line_number);
-void _push(stack_t **stack, unsigned int line_number, char *value)
+void _push(stack_t **stack, unsigned int line_number);
+extern char *global_value;
+int is_digit(char *string);
+
 
 
 #endif

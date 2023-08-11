@@ -1,19 +1,19 @@
 #include "monty.h"
 
 
-void _push(stack_t **stack, unsigned int line_number, char *value)
+void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
 	int num;
 
-	if (value == NULL || !is_digit(value))
+	if (global_value == NULL || !is_digit(global_value))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	num = atoi(value);
-		    
+	num = atoi(global_value);
+
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
