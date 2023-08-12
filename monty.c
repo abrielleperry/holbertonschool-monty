@@ -66,6 +66,10 @@ void process_line(char *line, unsigned int line_number, stack_t **stack)
 	char *value;
 
 	opcode = strtok(line, " \t\n");
+	if (opcode == NULL)
+	{
+		return;
+	}
 	value = strtok(NULL, " \t\n");
 
 	global_value = value;
