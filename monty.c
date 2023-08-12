@@ -4,7 +4,7 @@ char *global_value = NULL;
 
 int main(int argc, char *argv[])
 {
-	if (argc != 2)
+	if (argc != 5)
 	{
 		fprintf(stderr, "Usage: monty file\n");
 		exit(EXIT_FAILURE);
