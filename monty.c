@@ -54,34 +54,32 @@ void read_file(FILE *fileReader)
 
 	while ((read = getline(&line, &len, fileReader)) != -1)
 	{
-		char **tokens = tokenize_line(line);
-		char *instr_token = tokens[0];
-		void (*exe_opcode)(stack_t **stack, unsigned int line_number);
-
-		exe_opcode = opfunc_mapper(instr_token);
-
-		if (exe_opcode == NULL)
-		{
-			fprintf(stderr, "Unknown instruction %s at line %d\n", instr_token, line_number);
-			free(line);
-			for (int i = 0; tokens[i] != NULL; i++)
-			{
-				free(tokens[i]);
-			}
-			free(tokens);
-			fclose(fileReader);
-			exit(EXIT_FAILURE);
-		}
-
-		exe_opcode(&stack, line_number);
-
-		for (int i = 0; tokens[i] != NULL; i++)
-		{
-			free(tokens[i]);
-		}
-		free(tokens);
-
+		process_line(line, line_number, &stack);
 		line_number++;
 	}
 	free(line);
+}
+
+void process_line(char *line, unsigned int line_number, stack_t **stack)
+{
+	char *opcode;
+	char *value;
+
+	opcode = strtok(line, " \t\n");
+	value = strtok(NULL, " \t\n");
+
+	global_value = value;
+
+
+	void (*exe_opcode)(stack_t **, unsigned int);
+	exe_opcode = opfunc_mapper(opcode);
+
+	if (exe_opcode == NULL)
+	{
+		fprintf(stderr, "Unknown instruction %s at line %d\n", opcode, line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	exe_opcode(stack, line_number);
+	
 }

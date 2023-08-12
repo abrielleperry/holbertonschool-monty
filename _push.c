@@ -6,6 +6,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	stack_t *new_node;
 	int num;
 
+
 	if (global_value == NULL || !is_digit(global_value))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
