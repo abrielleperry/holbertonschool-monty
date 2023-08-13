@@ -81,6 +81,7 @@ void process_line(char *line, unsigned int line_number, stack_t **stack)
 	if (exe_opcode == NULL)
 	{
 		fprintf(stderr, "Unknown instruction %s at line %d\n", opcode, line_number);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 		exit(EXIT_FAILURE);
 	}
 
