@@ -25,8 +25,10 @@ void _push(stack_t **stack, unsigned int line_number)
 	new_node->n = num;
 	new_node->next = *stack;
 	*stack = new_node;
+	if (*stack != NULL)
+	(*stack)->prev = new_node;
+	*stack = new_node;
 }
-
 
 int is_digit(char *string)
 {

@@ -1,6 +1,5 @@
 #include "monty.h"
 
-#define DELIMITERS " \t\n"
 
 char **tokenize_line(char *line)
 {

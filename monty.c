@@ -75,22 +75,21 @@ void process_line(char *line, unsigned int line_number, stack_t **stack)
 	global_value = value;
 
 
-	void (*exe_opcode)(stack_t **, unsigned int);
-	exe_opcode = opfunc_mapper(opcode);
-
+	void (*exe_opcode)(stack_t **, unsigned int) = opfunc_mapper(opcode);
 	if (exe_opcode == NULL)
 	{
-		if (strcmp(opcode, "pushe") == 0)
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-		}
-		else
-		{
 		fprintf(stderr, "Unknown instruction %s at line %d\n", opcode, line_number);
-		}
 		exit(EXIT_FAILURE);
 	}
 
+	if (strcmp(opcode, "push") == 0)
+	{
+		if (value == NULL || !is_digit(value))
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+	}
 	exe_opcode(stack, line_number);
 	
 }
