@@ -24,7 +24,6 @@ void open_file(char *filename)
 	}
 
 	int fileCheck = access(filename, R_OK);
-
 	if (fileCheck == -1)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
@@ -32,7 +31,6 @@ void open_file(char *filename)
 	}
 
 	FILE *fileReader = fopen(filename, "r");
-
 	if (fileReader == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
@@ -40,7 +38,6 @@ void open_file(char *filename)
 	}
 
 	read_file(fileReader);
-
 	fclose(fileReader);
 }
 
@@ -78,6 +75,7 @@ void process_line(char *line, unsigned int line_number, stack_t **stack)
 	if (exe_opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -86,9 +84,23 @@ void process_line(char *line, unsigned int line_number, stack_t **stack)
 		if (value == NULL || !is_digit(value))
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			free_stack(stack);
 			exit(EXIT_FAILURE);
 		}
 	}
 	exe_opcode(stack, line_number);
 	
 }
+
+void free_stack(stack_t **stack) 
+{
+	stack_t *temp;
+	        
+	while (*stack != NULL)
+	{
+		temp = *stack;
+		*stack = (*stack)->next;
+		free(temp);
+	}
+}
+

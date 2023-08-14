@@ -45,5 +45,6 @@ void _push(stack_t **stack, unsigned int line_number);
 extern char *global_value;
 int is_digit(char *string);
 void process_line(char *line, unsigned int line_number, stack_t **stack);
+void free_stack(stack_t **stack);
 
 #endif
