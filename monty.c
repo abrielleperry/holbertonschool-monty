@@ -73,7 +73,7 @@ void process_line(char *line, unsigned int line_number, stack_t **stack)
 
 	value = strtok(NULL, " \t\n");
 
-	printf("%s ", opcode);
+/**	printf("%s ", opcode);
 	if (value != NULL)
 	{
 		printf("%s\n", value);
@@ -82,7 +82,7 @@ void process_line(char *line, unsigned int line_number, stack_t **stack)
 	{
 		printf("\n");
 	}
-	
+*/	
 	global_value = value;
 
 	void (*exe_opcode)(stack_t **, unsigned int) = opfunc_mapper(opcode);

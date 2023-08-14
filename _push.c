@@ -14,7 +14,6 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 
 	num = atoi(global_value);
-
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
@@ -23,12 +22,25 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 
 	new_node->n = num;
-	new_node->next = *stack;
-	*stack = new_node;
-	if (*stack != NULL)
-	(*stack)->prev = new_node;
-	*stack = new_node;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	
+	if (*stack == NULL)
+	{
+		*stack = new_node;
+		return;
+	}
+
+	stack_t *temp = *stack;
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+
+	temp->next = new_node;
+	new_node->prev = temp;
 }
+
 
 int is_digit(char *string)
 {
