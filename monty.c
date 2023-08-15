@@ -1,7 +1,5 @@
 #include "monty.h"
 
-char *global_value = NULL;
-
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
@@ -26,6 +24,7 @@ void open_file(char *filename)
 	}
 
 	int fileCheck = access(filename, R_OK);
+
 	if (fileCheck == -1)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
@@ -33,6 +32,7 @@ void open_file(char *filename)
 	}
 
 	FILE *fileReader = fopen(filename, "r");
+
 	if (fileReader == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
@@ -74,6 +74,7 @@ void process_line(char *line, unsigned int line_number, stack_t **stack)
 	global_value = value;
 
 	void (*exe_opcode)(stack_t **, unsigned int) = opfunc_mapper(opcode);
+
 	if (exe_opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
@@ -91,13 +92,13 @@ void process_line(char *line, unsigned int line_number, stack_t **stack)
 		}
 	}
 	exe_opcode(stack, line_number);
-	
+
 }
 
-void free_stack(stack_t **stack) 
+void free_stack(stack_t **stack)
 {
 	stack_t *temp;
-	        
+
 	while (*stack != NULL)
 	{
 		temp = *stack;
