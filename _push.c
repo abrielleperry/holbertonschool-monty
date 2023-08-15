@@ -25,6 +25,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 
 	num = atoi(global_value);
+	
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
