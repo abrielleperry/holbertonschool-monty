@@ -17,6 +17,8 @@ int main(int argc, char *argv[])
 
 void open_file(char *filename)
 {
+	stack_t *stack = NULL;
+
 	if (filename == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
@@ -37,11 +39,12 @@ void open_file(char *filename)
 		exit(EXIT_FAILURE);
 	}
 
-	read_file(fileReader);
+	read_file(fileReader, &stack);
 	fclose(fileReader);
+	free_stack(&stack);
 }
 
-void read_file(FILE *fileReader)
+void read_file(FILE *fileReader, stack_t **stack)
 {
 	char *line = NULL;
 	size_t len = 0;

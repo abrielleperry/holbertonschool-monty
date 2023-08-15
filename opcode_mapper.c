@@ -6,6 +6,7 @@ void (*opfunc_mapper(char *opcode))(stack_t **, unsigned int)
 	instruction_t opcodes[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pop", _pop},
 		/* ... add other opcodes and their functions here ... */
 		{NULL, NULL}
 	};
