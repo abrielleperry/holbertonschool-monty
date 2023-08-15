@@ -44,17 +44,16 @@ void open_file(char *filename)
 	free_stack(&stack);
 }
 
-void read_file(FILE *fileReader, stack_t **stack)
+void read_file(FILE *fileReader, stack_t **main_stack)
 {
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t read;
 	int line_number = 1;
-	stack_t *stack = NULL;
 
 	while ((read = getline(&line, &len, fileReader)) != -1)
 	{
-		process_line(line, line_number, &stack);
+		process_line(line, line_number, main_stack);
 		line_number++;
 	}
 	free(line);

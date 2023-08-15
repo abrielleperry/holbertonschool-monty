@@ -37,7 +37,7 @@ typedef struct instruction_s
 
 /* Prototypes */
 void open_file(char *filename);
-void read_file(FILE *fileReader, stack_t **stack);
+void read_file(FILE *fileReader, stack_t **main_stack);
 char **tokenize_line(char *line);
 void (*opfunc_mapper(char *opcode))(stack_t **, unsigned int);
 void _pall(stack_t **stack, unsigned int line_number);
@@ -46,6 +46,6 @@ extern char *global_value;
 int is_digit(char *string);
 void process_line(char *line, unsigned int line_number, stack_t **stack);
 void free_stack(stack_t **stack);
-void pop(stack_t **stack, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
 
 #endif
