@@ -48,6 +48,8 @@ void process_line(char *line, unsigned int line_number, stack_t **stack);
 void free_stack(stack_t **stack);
 void _pop(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
+
 
 
 #endif
