@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * _swap - Swaps the top two elements of the stack.
+ * @stack: A double pointer to the top of the stack.
+ * @line_number: The line number where the instruction appears.
+ */
+
 void _swap(stack_t **stack, unsigned int line_number)
 {
 	int temp;
