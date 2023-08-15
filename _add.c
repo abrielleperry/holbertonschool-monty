@@ -11,8 +11,8 @@ void _add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	(*stack)->next->n += (*stack)->n; // Add the top two elements
+	(*stack)->next->n += (*stack)->n;
 	temp = *stack;
-	*stack = (*stack)->next; // Move the pointer to the next element
-	free(temp); // Free the old top element
+	*stack = (*stack)->next;
+	free(temp);
 }
