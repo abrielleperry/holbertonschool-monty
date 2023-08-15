@@ -26,7 +26,6 @@ void _push(stack_t **stack, unsigned int line_number)
 	new_node->n = num;
 	new_node->next = NULL;
 	new_node->prev = NULL;
-	
 	if (*stack == NULL)
 	{
 		*stack = new_node;
@@ -34,6 +33,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 
 	stack_t *temp = *stack;
+
 	while (temp->next != NULL)
 	{
 		temp = temp->next;
