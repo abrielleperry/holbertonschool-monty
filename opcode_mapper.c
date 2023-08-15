@@ -8,6 +8,7 @@ void (*opfunc_mapper(char *opcode))(stack_t **, unsigned int)
 		{"pall", _pall},
 		{"pint", _pint},
 		{"pop", _pop},
+		{"swap", _swap},
 		{"nop", _nop},
 		/* ... add other opcodes and their functions here ... */
 		{NULL, NULL}
