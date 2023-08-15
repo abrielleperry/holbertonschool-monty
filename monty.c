@@ -1,5 +1,7 @@
 #include "monty.h"
 
+char *global_value = NULL;
+
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
